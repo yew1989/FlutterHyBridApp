@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hybrid_app/book_page.dart';
 import 'package:hybrid_app/home_page.dart';
+import 'package:hybrid_app/storage_page.dart';
 
 class RootPage extends StatefulWidget {
   @override
@@ -17,13 +18,13 @@ class _RootPageState extends State<RootPage> {
           items: [
             BottomNavigationBarItem(title: Text("自定义"), icon: Icon(Icons.home)),
             BottomNavigationBarItem(title: Text("参考"), icon: Icon(Icons.book)),
-            // BottomNavigationBarItem(title: Text("我的"), icon: Icon(Icons.account_box)),
+            BottomNavigationBarItem(title: Text("储备"), icon: Icon(Icons.storage)),
           ],
         ),
         resizeToAvoidBottomInset:true,
         tabBuilder: (BuildContext context, int index) {
           return CupertinoTabView(
-            builder: (context) {
+            builder:(context){
             switch (index) {
               case 0:
                 return HomePage();
@@ -31,9 +32,12 @@ class _RootPageState extends State<RootPage> {
               case 1:
                 return BookPage();
                 break;
-              // case 2:
-              //   return Container();
-              //   break;
+              case 2:
+                return StoragePage();
+                break;
+              default:
+                return Container();
+                break;
                }
             },
           );
